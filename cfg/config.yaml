@@ -1,0 +1,6 @@
+topic_in: "/depth_camera/depth/points"
+topic_out: "/depth_camera/depth/points_converted"
+rotation_x: -0.5
+rotation_y: 0.5
+rotation_z: -0.5
+rotation_w: 0.5

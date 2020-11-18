@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="transform_pcl" name="transform_node" type="transform_node" output="screen">
+		<rosparam file="$(find transform_pcl)/cfg/config.yaml"/>
+	</node>
+</launch>
