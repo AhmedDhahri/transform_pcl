@@ -19,25 +19,30 @@ void callback(PointCloud pcl_in){
 	pub.publish(pcl_out);
 }
 
-void init(float x,float y,float z,float w){
+void init(float x,float y,float z,float w, float xt, float yt, float zt){
 	const tf::Quaternion q(x,y,z,w);
+	const tf::Vector3 v(xt,yt,zt);
 	tf::Transform bt;
 	bt.setRotation(q);
+	bt.setOrigin(v);
 	pcl_ros::transformAsMatrix(bt, transform);
 }
 
 int main(int argc, char** argv){
 	ros::init (argc, argv, "transform_pcl_node");
 	ros::NodeHandle nh;
-	float x,y,z,w;
+	float x,y,z,w,xt,yt,zt;
 	if (nh.getParam("/transform_node/topic_in", input_topic)
 		&& nh.getParam("/transform_node/topic_out", output_topic)
 		&& nh.getParam("/transform_node/rotation_x", x)
 		&& nh.getParam("/transform_node/rotation_y", y)
 		&& nh.getParam("/transform_node/rotation_z", z)
 		&& nh.getParam("/transform_node/rotation_w", w)
+		&& nh.getParam("/transform_node/translation_x", xt)
+		&& nh.getParam("/transform_node/translation_y", yt)
+		&& nh.getParam("/transform_node/translation_z", zt)
 		){	
-		init(x,y,z,w);
+		init(x,y,z,w,xt,yt,zt);
 	}
 	else
 		ROS_FATAL("%s", "Wrong parameters");
