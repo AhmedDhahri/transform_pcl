@@ -1,7 +1,8 @@
 # transform_pcl
 Apply 3D transformation to "sensor_msgs/PointCloud2" ROS topics.
 
-# Paramaters: *the config file is cfg/config.yaml*
+# Paramaters: 
+*the config file is cfg/config.yaml*
 
 - topic_in: input topic to transform.
 - topic_out: output transformed topic.
